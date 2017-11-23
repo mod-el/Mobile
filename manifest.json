@@ -1,0 +1,6 @@
+{
+	"name": "Mobile",
+	"description": "Do you want an alternative site version for mobile users? This module will do the trick - uses Mobile_Detect 2.8.26",
+	"version": "1.2.0",
+	"dependencies": {}
+}
