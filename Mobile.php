@@ -6,7 +6,7 @@ class Mobile extends Module {
 	public $options = [];
 	public $isMobile = false;
 
-	function init($options){
+	function init(array $options){
 		$this->options = array_merge([
 			'header' => 'mobile/header.php',
 			'footer' => 'mobile/footer.php',
@@ -24,7 +24,7 @@ class Mobile extends Module {
 		}
 	}
 
-	public function getController(array $request, $rule){
+	public function getController(array $request, string $rule){
 		if($rule==='m'){
 			$this->isMobile = true;
 			array_shift($request);
