@@ -2,11 +2,13 @@
 
 use Model\Core\Module;
 
-class Mobile extends Module {
+class Mobile extends Module
+{
 	public $options = [];
 	public $isMobile = false;
 
-	function init(array $options){
+	function init(array $options)
+	{
 		$this->options = array_merge([
 			'header' => 'mobile/header.php',
 			'footer' => 'mobile/footer.php',
@@ -15,17 +17,18 @@ class Mobile extends Module {
 			'js' => false,
 		], $options);
 
-		if(!isset($_SESSION[SESSION_ID]['zk-mobile-detect'])){
+		if (!isset($_SESSION[SESSION_ID]['zk-mobile-detect'])) {
 			$detect = new Mobile_Detect();
 			$_SESSION[SESSION_ID]['zk-mobile-detect'] = ($detect->isMobile() ? ($detect->isTablet() ? 'tablet' : 'mobile') : 'desktop');
 		}
-		if(isset($_GET['site-version']) and in_array($_GET['site-version'], array('mobile', 'tablet', 'desktop'))){
+		if (isset($_GET['site-version']) and in_array($_GET['site-version'], array('mobile', 'tablet', 'desktop'))) {
 			$_SESSION[SESSION_ID]['zk-mobile-detect'] = $_GET['site-version'];
 		}
 	}
 
-	public function getController(array $request, string $rule){
-		if($rule==='m'){
+	public function getController(array $request, string $rule)
+	{
+		if ($rule === 'm') {
 			$this->isMobile = true;
 			array_shift($request);
 			return [
@@ -33,7 +36,7 @@ class Mobile extends Module {
 				'prefix' => $rule,
 				'redirect' => $request,
 			];
-		}else{
+		} else {
 			$this->model->error('Rule not recognized.');
 		}
 	}

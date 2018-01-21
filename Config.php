@@ -2,9 +2,8 @@
 
 use Model\Core\Module_Config;
 
-class Config extends Module_Config {
-	protected $name = 'Mobile';
-
+class Config extends Module_Config
+{
 	public function getRules(): array
 	{
 		return [
