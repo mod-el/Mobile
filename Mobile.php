@@ -26,7 +26,7 @@ class Mobile extends Module
 		}
 	}
 
-	public function getController(array $request, string $rule)
+	public function getController(array $request, string $rule): ?array
 	{
 		if ($rule === 'm') {
 			$this->isMobile = true;
