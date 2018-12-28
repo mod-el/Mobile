@@ -17,12 +17,12 @@ class Mobile extends Module
 			'js' => false,
 		], $options);
 
-		if (!isset($_SESSION[SESSION_ID]['zk-mobile-detect'])) {
+		if (!isset($_SESSION['zk-mobile-detect'])) {
 			$detect = new Mobile_Detect();
-			$_SESSION[SESSION_ID]['zk-mobile-detect'] = ($detect->isMobile() ? ($detect->isTablet() ? 'tablet' : 'mobile') : 'desktop');
+			$_SESSION['zk-mobile-detect'] = ($detect->isMobile() ? ($detect->isTablet() ? 'tablet' : 'mobile') : 'desktop');
 		}
 		if (isset($_GET['site-version']) and in_array($_GET['site-version'], array('mobile', 'tablet', 'desktop'))) {
-			$_SESSION[SESSION_ID]['zk-mobile-detect'] = $_GET['site-version'];
+			$_SESSION['zk-mobile-detect'] = $_GET['site-version'];
 		}
 	}
 
